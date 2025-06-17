@@ -1,0 +1,41 @@
+[
+    {
+        "configuracion_del_proceso": {
+            "cfg_wf": "workflow-arquetipo-ingesta-raw-{{version_arquetipo_raw}}",
+            "cfg_proc": "process-{{nombre_proceso}}",
+            "cfg_pe": "{{periodicidad}}"
+        },
+        "valores_fn_move_file_on_bucket": {
+            "mvbkt_src": "dev-deinsoluciones-ingestas",
+            "mvbkt_src_path": "origin-files/",
+            "mvbkt_dst": "dev-deinsoluciones-ingestas",
+            "mvbkt_dst_path": "files/{{nombre_tabla_raw}}/",
+            "mvbkt_file": "{{nombre_tabla_raw}}.parquet"
+        },
+        "valores_fn_validacion_de_archivo_gcs": {
+            "valgcs_bkt": "dev-deinsoluciones-ingestas",
+            "valgcs_file": "files/{{nombre_tabla_raw}}/{{nombre_tabla_raw}}.parquet"
+        },
+        "valores_fn_create_table_from_schema": {
+            "crfs_sp": "schemas/{{nombre_tabla_raw}}.json",
+            "crfs_di": "dev_raw_zone",
+            "crfs_ti": "{{nombre_tabla_raw}}",
+            "crfs_pc": "{{campo_fecha_tabla_raw}}"
+        },
+        "valores_fn_delete_from_table": {
+            "dft_tb": "deinsoluciones-serverless.dev_raw_zone.{{nombre_tabla_raw}}",
+            "dft_fp": "{{fecha_ejecucion}}",
+            "dft_fc": "{{campo_fecha_tabla_raw}}"
+        },
+        "valores_ejecucion_dataflow": {
+            "dfraw_input": "gs://dev-deinsoluciones-ingestas/files/{{nombre_tabla_raw}}/{{nombre_tabla_raw}}.parquet",
+            "dfraw_output": "deinsoluciones-serverless:dev_raw_zone.{{nombre_tabla_raw}}",
+            "dfraw_mt": "n2-standard-4"
+        },
+        "valores_fn_validacion_registros_bg": {
+            "valbqraw_prj": "deinsoluciones-serverless",
+            "valbqraw_ds": "dev_raw_zone",
+            "valbqraw_tbl": "{{nombre_tabla_raw}}"
+        }
+    }
+]
