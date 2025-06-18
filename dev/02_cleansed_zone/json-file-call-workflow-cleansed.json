@@ -1,0 +1,9 @@
+{
+    "cfg_wf": "workflow-arquetipo-ingesta-cleansed",
+    "cfg_proc": "process-{{nombre_proceso}}",
+    "cfg_pe": "{{periodicidad}}",
+    "fp": "{{fecha_ejecucion}}",
+    "ejecutar_sat": true,
+    "ejecutar_hub": false,
+    "ejecutar_link": false
+}

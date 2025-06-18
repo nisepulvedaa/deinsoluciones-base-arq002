@@ -1,0 +1,5 @@
+{
+    "cfg_wf": "workflow-arquetipo-ingesta-raw-{{version_arquetipo_raw}}",
+    "cfg_proc": "process-{{nombre_proceso}}",
+    "ei_flag": "0"
+}
